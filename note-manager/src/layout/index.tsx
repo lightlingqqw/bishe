@@ -4,12 +4,13 @@ import { Layout, Menu, theme } from 'antd';
 import { Outlet,useNavigate  } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
-const a = ['/statistics','1','2','3'];
+const a = ['/statistics','/person','2','/publish'];
+const b = ['统计分析','人员管理','笔记管理','上传笔记'];
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
   (icon, index) => ({
     key: a[index],
     icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
+    label: b[index],
   }),
 );
 

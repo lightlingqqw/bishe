@@ -24,6 +24,7 @@ const Login = ()=>{
     const toLogin = (params:{username:string;password:string})=>{
         login(params).then((res)=>{
             if(res.result===1){
+                localStorage.setItem('token',res.data);
                 navigate('/')
             }
         });

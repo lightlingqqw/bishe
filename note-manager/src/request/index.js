@@ -1,7 +1,7 @@
 export const request = (path,params)=>{
-    if(params.method.toLowerCase()==='post'){
-
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if(params&&params.method.toLowerCase()==='post'){
+        
         params = {
           ...params,
           body:JSON.stringify(params.body),
@@ -19,7 +19,14 @@ export const request = (path,params)=>{
           })
     }
 
-    return fetch(`http://localhost:8080/${path}`).then(response => {
+    params = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    };
+    return fetch(`http://localhost:8080/${path}`,params).then(response => {
         return response.json();
+        
       })
 }
